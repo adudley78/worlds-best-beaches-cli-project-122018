@@ -38,7 +38,7 @@ Adam Dudley
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [MIT License](https://github.com/adudley78/worlds-best-beaches-cli-project-122018/blob/master/LICENSE.txt).
 
 ## Acknowledgments
 
