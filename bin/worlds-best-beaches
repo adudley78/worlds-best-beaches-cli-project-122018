@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+# This is the file a user will run.
+
+# puts "Hello World"
+
+require "bundler/setup"
+require "worlds_best_beaches"
+
+# require './lib/worlds_best_beaches'
+#
+# require "bundler/setup"
+# require "worlds_best_beaches"
+
+# Creates a new instance of CLI controller, calls the call method on it, which launches the user experience/interface.
+WorldsBestBeaches::CLI.new.call
