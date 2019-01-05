@@ -14,7 +14,7 @@ class WorldsBestBeaches::CLI
     # Beach is a class method that calls all that returns the collection of beaches.
     @beaches = WorldsBestBeaches::Beach.all
     @beaches.each.with_index(1) do |beach,i|
-      puts "#{i}. #{beach.name} - #{beach.city}, #{beach.country}"
+      puts "#{i}.#{beach.name} - #{beach.location}"
     end
   end
 
@@ -26,11 +26,11 @@ class WorldsBestBeaches::CLI
       input = gets.strip.downcase
       if input.to_i > 0
         the_beach = @beaches[input.to_i-1]
-        puts "#{the_beach.insta_appeal} - #{the_beach.fun_fact}, #{the_beach.travel_tips}"
+        puts "#{the_beach.more_info}"
       elsif input == "list"
         list_beaches
       else
-        puts "We're not sure what you want. Type a number, list, or exit."
+        puts "We're not sure what you want. Type a number, list, or exit." # << This is displayed before the puts of the goodbye method when user enters 'exit'. Need to fis.
       end
   end
 

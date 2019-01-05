@@ -20,11 +20,11 @@ class WorldsBestBeaches::Beach
   # scrapes the best beaches webpage and assigns predefined attributes to Beach objects
   def self.scrape_tripadvisor
     doc = Nokogiri::HTML(open("https://www.coastalliving.com/tripadvisor-best-beaches-world"))
-    binding.pry
+    # binding.pry
     beach = self.new
     beach.name = doc.css('.glide-slide.image-slide')[24].css('h3').text.strip.sub!( /\A.{3}/m, "" ) # << gives me the name of the first beach
-    beach.location = location = doc.css('.glide-slide.image-slide')[24].css('div.glide-slide-desc p a strong').text.strip # << location of first beach
-    beach.more_info = 
+    beach.location = doc.css('.glide-slide.image-slide')[24].css('div.glide-slide-desc p a strong').text.strip # << location of first beach
+    beach.more_info = doc.css('.glide-slide.image-slide')[24].css('div.glide-slide-desc p[4]').text.strip # << more info about the first beach
     beach
   end
 end
