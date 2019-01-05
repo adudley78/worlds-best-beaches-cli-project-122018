@@ -4,12 +4,13 @@ class WorldsBestBeaches::Beach
 
   @@all = []
 
+    # takes in an argument
   def self.new_from_page(b)
-    self.new(b.css('h3').text,
-    css('.glide-slide.image-slide')[24].css('div.glide-slide-desc p a strong').text,
-    css('.glide-slide.image-slide')[24].css('div.glide-slide-desc p[4]').text))
+    self.new(b.css('h3').text, b.css('.glide-slide.image-slide')[24].css('div.glide-slide-desc p a strong').text, b.css('.glide-slide.image-slide')[24].css('div.glide-slide-desc p[4]').text)
+    binding.pry
   end
 
+  # instatiates and stores new instances of beach objects with three attributes
   def initialize(name = nil, location = nil, more_info = nil)
     @name = name
     @location = location
@@ -20,3 +21,5 @@ class WorldsBestBeaches::Beach
   def self.all
     @@all
   end
+
+end
