@@ -1,15 +1,19 @@
+# scrape website for data and
 class WorldsBestBeaches::Scraper
 
-  def get_page
+  # gets the webpage to be scraped
+  def self.get_page
     Nokogiri::HTML(open("https://www.coastalliving.com/tripadvisor-best-beaches-world"))
   end
 
-  def scrape_beaches
-    self.get_page.css('.glide-slide.image-slide').css('h3').text.strip.sub!( /\A.{3}/m, "" )
+  # scrapes desired data from page
+  def self.scrape_beaches
+    data = self.get_page.css('.glide-slide.image-slide')
   end
 
-  def make_beaches
-    scrape_beaches.each do |b|
+  # creates a new beach object for each of the 25 beaches
+  def self.make_beaches
+     scrape_beaches.each do |b|
       WorldsBestBeaches::Beach.new_from_page(b)
     end
   end

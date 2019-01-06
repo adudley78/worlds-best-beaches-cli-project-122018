@@ -29,14 +29,16 @@ class WorldsBestBeaches::CLI
         puts "#{the_beach.more_info}"
       elsif input == "list"
         list_beaches
+      elsif input == "exit"
+        goodbye
       else
         puts "We're not sure what you want. Type a number, list, or exit." # << This is displayed before the puts of the goodbye method when user enters 'exit'. Need to fis.
       end
+    end
   end
 
     def goodbye
       puts "Thanks for using Worlds Best Beaches. Come back soon!"
     end
-  end
 
-end
+  end
