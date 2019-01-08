@@ -4,5 +4,5 @@ require 'nokogiri'
 require 'pry'
 
 require_relative './worlds_best_beaches/version'
-require_relative './worlds_best_beaches/beach_old'
-require_relative './worlds_best_beaches/cli_old'
+require_relative './worlds_best_beaches/beach'
+require_relative './worlds_best_beaches/cli'
