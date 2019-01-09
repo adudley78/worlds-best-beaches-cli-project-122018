@@ -14,7 +14,7 @@ class WorldsBestBeaches::Beach
   end
 
   def self.all
-    @@all
+    @@all.reverse
   end
 
   # returns a collection of instances of Beach objects

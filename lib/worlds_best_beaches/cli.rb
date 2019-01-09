@@ -17,6 +17,13 @@ class WorldsBestBeaches::CLI
     # Beach is a class method that calls all that returns the collection of beaches.
     #binding.pry
     @beaches = WorldsBestBeaches::Beach.all
+    # counter = Array(1..25).reverse
+    # @beaches.each.with_index do |beach, i|
+    #   puts "#{counter[i]}. #{beach.name} - #{beach.location}"
+    # counter = 25
+    # @beaches.each do |beach|
+    #   puts "#{counter}. #{beach.name} - #{beach.location}"
+    #   counter -= 1
     @beaches.each.with_index(1) do |beach,i|
       puts "#{i}. #{beach.name} - #{beach.location}"
     end
@@ -28,6 +35,7 @@ class WorldsBestBeaches::CLI
     while input != "exit"
       puts " "
       puts "Please enter the number of the beach you'd like to learn more about or type list to see the list of beaches again or type exit."
+      puts " "
       input = gets.strip.downcase
       if input.to_i > 0 && input.to_i < 26
         beach = @beaches[input.to_i-1]
