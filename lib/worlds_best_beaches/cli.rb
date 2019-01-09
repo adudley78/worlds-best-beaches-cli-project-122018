@@ -3,6 +3,7 @@ class WorldsBestBeaches::CLI
 
   # called upon user starting new CLI session
   def call
+    WorldsBestBeaches::Beach.today
     list_beaches
     menu
     goodbye
@@ -12,10 +13,10 @@ class WorldsBestBeaches::CLI
   def list_beaches
     puts "Welcome to the World's Best Beaches - Discover, Learn, Explore"
     # Beach is a class method that calls all that returns the collection of beaches.
-    @beaches = WorldsBestBeaches::Beach.today
-    # binding.pry
-    @beaches.each.with_index(25) do |beach,i|
-      puts "#{i}.#{beach.name} - #{beach.location}"
+    #binding.pry
+    @beaches = WorldsBestBeaches::Beach.all
+    @beaches.each.with_index(1) do |beach,i|
+      puts "#{i}. #{beach.name} - #{beach.location}"
     end
   end
 
@@ -26,10 +27,9 @@ class WorldsBestBeaches::CLI
       puts "Please enter the number of the beach you'd like to learn more about or type list to see the list of beaches again or type exit."
       input = gets.strip.downcase
       if input.to_i > 0 && input.to_i < 26
-        # @beaches[input.to_i-1]
-        @beaches.each do |beach,i|
+        beach = @beaches[input.to_i-1]
+        # @beaches.each do |beach,i|
           puts "#{beach.more_info}"
-        end
       elsif input == "list"
         list_beaches
       elsif input == "exit"
