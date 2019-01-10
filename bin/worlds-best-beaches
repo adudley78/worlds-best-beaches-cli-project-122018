@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "worlds_best_beaches"
+require_relative "../config/environment"
 
 # Creates a new instance of CLI controller, calls the call method on it, which launches the user experience/interface.
 WorldsBestBeaches::CLI.new.call

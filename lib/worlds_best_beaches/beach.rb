@@ -1,5 +1,5 @@
 # instantiate a Beach class inside a module
-class WorldsBestBeaches::Beach
+class WorldsBestBeaches::Beach # refactor scrape-related methods into separate Scraper class
 
   # create reader/writer methods / attributes or properties for each beach object
   attr_accessor :name, :location, :more_info # add best time of year to visit
@@ -14,9 +14,9 @@ class WorldsBestBeaches::Beach
     @@all << self
   end
 
-  # call all beach objects and reverse the order
+  # call all beach objects and reverse the order for display purposes
   def self.all
-    @@all.reverse
+    @@all.reverse # refactor with separate method that reverses the order
   end
 
   # initiate the scrape
@@ -24,11 +24,11 @@ class WorldsBestBeaches::Beach
     self.scrape_tripadvisor
   end
 
-  # scrape data from website
+  # create new beach objects from scraped data
   def self.scrape_tripadvisor
     doc = Nokogiri::HTML(open("https://www.coastalliving.com/tripadvisor-best-beaches-world"))
     doc.search('.glide-slide.image-slide').each.with_index do |b, i|
-      #
+      # refactor with case statement
       if i == 0
         location = b.search('.glide-slide-desc p a strong').text.split("!")[1][0..15]
       elsif i == 1

@@ -23,7 +23,7 @@ class WorldsBestBeaches::CLI
   # print more info
   def menu
     input = nil
-    while input != "exit"
+    while input != "quit"
       puts " "
       puts "Please enter the number of the beach you'd like to learn more about and hit enter or type list to see the list of beaches again or type quit to exit."
       puts " "
@@ -32,6 +32,8 @@ class WorldsBestBeaches::CLI
         beach = @beaches[input.to_i-1]
           puts " "
           puts "#{beach.more_info}"
+          puts " "
+          submenu
       elsif input == "list"
         list_beaches
       elsif input == "quit"
@@ -41,6 +43,24 @@ class WorldsBestBeaches::CLI
         puts "We're not sure what you want. Type a number, list, or quit and hit enter." # << This is displayed before the puts of the goodbye method when user enters 'exit'. Need to fis.
       end
     end
+  end
+
+  def submenu
+    input = nil
+    # while input != "n" || input != "N"
+      puts " "
+      puts "Would like a link to learn even more? Type Y or N."
+      puts " "
+      input = gets.strip.downcase # get user input
+      if input == "y" || input == "Y"
+        puts " "
+        puts "[Link for more info]"
+        puts " "
+      # else
+      #   puts " "
+      #   puts "We're not sure what you want. Type y or n and hit enter." # << This is displayed before the puts of the goodbye method when user enters 'exit'. Need to fis.
+      end
+    # end
   end
 
   # print exit messagge
