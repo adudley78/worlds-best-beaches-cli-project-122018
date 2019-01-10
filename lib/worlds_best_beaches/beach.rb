@@ -1,28 +1,30 @@
-# instatiates a new parent class and child class
+# instantiate a Beach class inside a module
 class WorldsBestBeaches::Beach
 
-  # creates callable methods or attributes or properties for each Beach instance
-  attr_accessor :name, :location, :more_info # might want to add best time of year to visit in the future
+  # create reader/writer methods / attributes or properties for each beach object
+  attr_accessor :name, :location, :more_info # add best time of year to visit
 
   @@all = []
 
-  def initialize(name=nil, location=nil, more_info=nil)
+  # initialize a beach instance with these properties and add to array
+  def initialize(name=nil, location=nil, more_info=nil) # refactor with mass assignment pattern
     @name = name
     @location = location
     @more_info = more_info
     @@all << self
   end
 
+  # call all beach objects and reverse the order
   def self.all
     @@all.reverse
   end
 
-  # returns a collection of instances of Beach objects
+  # initiate the scrape
   def self.today
     self.scrape_tripadvisor
   end
 
-  # get data from website to be scraped and create/save new beach objects
+  # scrape data from website
   def self.scrape_tripadvisor
     doc = Nokogiri::HTML(open("https://www.coastalliving.com/tripadvisor-best-beaches-world"))
     doc.search('.glide-slide.image-slide').each.with_index do |b, i|
@@ -60,7 +62,7 @@ class WorldsBestBeaches::Beach
       else
         more_info = b.search('div.glide-slide-desc p').last.text
       end
-      self.new(name, location, more_info)
+      self.new(name, location, more_info) # instantiate new beach objects from scraped data with three properties
     end
   end
 
